@@ -9,15 +9,15 @@ export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
     const heroes = [
-      { id: 12, name: 'Dr. Nice' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr. IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
+      { Id: 12, Name: 'Dr. Nice' },
+      { Id: 13, Name: 'Bombasto' },
+      { Id: 14, Name: 'Celeritas' },
+      { Id: 15, Name: 'Magneta' },
+      { Id: 16, Name: 'RubberMan' },
+      { Id: 17, Name: 'Dynama' },
+      { Id: 18, Name: 'Dr. IQ' },
+      { Id: 19, Name: 'Magma' },
+      { Id: 20, Name: 'Tornado' }
     ];
     return {heroes};
   }
@@ -28,6 +28,6 @@ export class InMemoryDataService implements InMemoryDbService {
   // if the heroes array is not empty, the method below returns the highest
   // hero id + 1.
   genId(heroes: Hero[]): number {
-    return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
+    return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.Id)) + 1 : 11;
   }
 }

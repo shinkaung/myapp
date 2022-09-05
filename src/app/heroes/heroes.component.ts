@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
-import { MessageService } from "/Users/shinkaung/training2022/myapp/src/app/message.service";
+import { MessageService } from '../message.service';
+// import { MessageService } from "/Users/shinkaung/training2022/myapp/src/app/message.service";
 
 @Component({
   selector: 'app-heroes',
@@ -13,8 +14,7 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
  
 
-  constructor(private heroService: HeroService,
-    private messageService: MessageService) { }
+  constructor(private heroService: HeroService , private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getHeroes();
@@ -30,10 +30,10 @@ export class HeroesComponent implements OnInit {
         });    
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.heroService.addHero({ name } as Hero)
+  add(Name: string): void {
+    Name = Name.trim();
+    if (!Name) { return; }
+    this.heroService.addHero({ Name } as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);
       });
@@ -41,9 +41,9 @@ export class HeroesComponent implements OnInit {
   }
   delete(hero: Hero): void {
     this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero.id).subscribe( x=> {
+    this.heroService.deleteHero(hero.Id).subscribe( x=> {
       if(x !== undefined){
-        this.messageService.add(`Delete Hero Success.ID ${hero.name}`)
+        this.messageService.add(`Delete Hero Success.ID ${hero.Name}`)
       }
     });
   }

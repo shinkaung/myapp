@@ -10,9 +10,9 @@
     Add 
   </button>
 </div>
-<ul class="employee">
+<ul class="heroes">
   <li *ngFor="let employee of employees">
-    <a routerLink="/empdetail/{{ employee.id }}"><span class="badge">{{ employee.id }}   </span> {{employee.empName}}{{ employee.empAddress }}</a>
+    <a routerLink="/empdetail/{{ employee.Id }}"><span class="badge">{{ employee.Id }}   </span> {{employee.empName}}&nbsp;&nbsp;,&nbsp;{{ employee.empAddress }}</a>
     <button type="button" class="delete" title="delete employee"(click)="delete(employee)" >
       Delete
     </button>

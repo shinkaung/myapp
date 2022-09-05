@@ -17,11 +17,11 @@ export class HeroService {
     ) { }
 
     getHeroes(): Observable<Hero[]> {
-      return this.apiservice.get("/Heroes");
+      return this.apiservice.get("/Heroess");
     }
 /** GET hero by id. Will 404 if id not found */
 getHero(id: number): Observable<Hero> {
-  return this.apiservice.get(`/Heroes/${id}`);
+  return this.apiservice.get(`/Heroess/${id}`);
 }
   private log(message: string): void {
     this.messageService.add(`HeroService: ${message}`);
@@ -41,16 +41,16 @@ getHero(id: number): Observable<Hero> {
 
     /** PUT: update the hero on the server */
 updateHero(hero: Hero): Observable<any> {
-  return this.apiservice.putJson(`/Heroes/${hero.id}`, hero);
+  return this.apiservice.putJson(`/Heroess/${hero.Id}`, hero);
 }
 
 /** POST: add a new hero to the server */
 addHero(hero: Hero): Observable<Hero> {
-  return this.apiservice.postJson("/Heroes", hero);
+  return this.apiservice.postJson("/Heroess", hero);
 }
 /** DELETE: delete the hero from the server */
 deleteHero(id: number): Observable<Hero> {
-  return this.apiservice.delete(`/Heroes/${id}`);
+  return this.apiservice.delete(`/Heroess/${id}`);
 }
 /* GET heroes whose name contains search term */
 searchHeroes(term: string): Observable<Hero[]> {
@@ -58,6 +58,6 @@ searchHeroes(term: string): Observable<Hero[]> {
     // if not search term, return empty hero array.
     return of([]);
   }
-  return this.apiservice.postJson("/Heroes/search",{"term":term});
+  return this.apiservice.postJson("/Heroess/search",{"term":term});
 }
 }

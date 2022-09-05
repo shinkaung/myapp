@@ -17,11 +17,11 @@ export class EmployeeService {
     private messageService: MessageService) { }
 
     getEmployees(): Observable<Employee[]> {
-      return this.apiservice.get("/Employee/");
+      return this.apiservice.get("/Employees/");
     }
 /** GET employee by id. Will 404 if id not found */
 getEmployee(id: number): Observable<Employee> {
-  return this.apiservice.get(`/Employee/${id}`);
+  return this.apiservice.get(`/Employees/${id}`);
 }
   private log(message: string): void {
     this.messageService.add(`EmployeeService: ${message}`);
@@ -41,16 +41,16 @@ getEmployee(id: number): Observable<Employee> {
 
     /** PUT: update the hero on the server */
 updateEmployee(employee: Employee): Observable<any> {
-  return this.apiservice.putJson(`/Employee/${employee.id}`, employee);
+  return this.apiservice.putJson(`/Employees/${employee.Id}`, employee);
 }
 
 /** POST: add a new hero to the server */
 addEmployee(employee: Employee): Observable<Employee> {
-  return this.apiservice.postJson("/Employee", employee);
+  return this.apiservice.postJson("/Employees", employee);
 }
 /** DELETE: delete the hero from the server */
 deleteEmployee(id: number): Observable<Employee> {
-  return this.apiservice.delete(`/Employee/${id}`);
+  return this.apiservice.delete(`/Employees/${id}`);
 }
 /* GET heroes whose name contains search term */
 searchEmployee(term: string): Observable<Employee[]> {
@@ -58,6 +58,6 @@ searchEmployee(term: string): Observable<Employee[]> {
     // if not search term, return empty hero array.
     return of([]);
   }
-  return this.apiservice.postJson("/Employee/search",{"term":term});
+  return this.apiservice.postJson("/Employees/search",{"term":term});
 }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
-import { MessageService } from "/Users/shinkaung/training2022/myapp/src/app/message.service";
+import { MessageService } from '../message.service';
+// import { MessageService } from "/Users/shinkaung/training2022/myapp/src/app/message.service";
 
 
 @Component({
@@ -43,7 +44,7 @@ export class EmployeeComponent implements OnInit {
   }
   delete(employee: Employee): void {
     this.employees = this.employees.filter(h => h !== employee);
-    this.employeeService.deleteEmployee(employee.id).subscribe( x=> {
+    this.employeeService.deleteEmployee(employee.Id).subscribe( x=> {
       if(x !== undefined){
         this.messageService.add(`Delete Employee Success.ID ${employee.empName}`)
       }
