@@ -20,8 +20,8 @@ export class HeroService {
       return this.apiservice.get("/Heroess");
     }
 /** GET hero by id. Will 404 if id not found */
-getHero(id: number): Observable<Hero> {
-  return this.apiservice.get(`/Heroess/${id}`);
+getHero(Id: number): Observable<Hero> {
+  return this.apiservice.get(`/Heroess/${Id}`);
 }
   private log(message: string): void {
     this.messageService.add(`HeroService: ${message}`);
@@ -49,8 +49,8 @@ addHero(hero: Hero): Observable<Hero> {
   return this.apiservice.postJson("/Heroess", hero);
 }
 /** DELETE: delete the hero from the server */
-deleteHero(id: number): Observable<Hero> {
-  return this.apiservice.delete(`/Heroess/${id}`);
+deleteHero(Id: number): Observable<Hero> {
+  return this.apiservice.delete(`/Heroess/${Id}`);
 }
 /* GET heroes whose name contains search term */
 searchHeroes(term: string): Observable<Hero[]> {
