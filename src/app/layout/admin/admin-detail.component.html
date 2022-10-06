@@ -1,0 +1,64 @@
+<div *ngIf="adminEdit.value">
+    <h3>{{adminEdit.value.AdminName | uppercase}} Details</h3>
+    <div><span>Admin ID: </span>{{adminEdit.value.Id}}</div>
+    <br/>
+
+    <form [formGroup]="adminEdit" (ngSubmit)="saveAdmin()">
+    <div>
+      <label for="AdminName">Admin name: </label>
+      <input class="form-control" placeholder="Name" formControlName="AdminName">
+      <div *ngIf="adminEdit.get('AdminName').invalid && adminEdit.get('AdminName').errors.required">
+        Admin Name is required.
+      </div>
+      <div *ngIf="adminEdit.get('AdminName').invalid && adminEdit.get('AdminName').errors.maxlength">
+        Admin Name must be max 20 chars long.
+      </div>
+      <div *ngIf="adminEdit.get('AdminName').invalid && adminEdit.get('AdminName').errors.minlenght">
+        Admin Name must be min 5 chars long.
+      </div>
+
+      <br/>
+      <label for="Email">Email: </label>
+      <input class="form-control" placeholder="Email" formControlName="Email">
+    <br/>
+      <label for="LoginName">LoginName: </label>
+      <input class="form-control" placeholder="LoginName" formControlName="LoginName">
+    <br/>
+      <label for="AdminLevel">AdminLevel: </label>
+      <kendo-dropdownlist 
+         class="form-control" 
+         formControlName="AdminLevelId" 
+         [data]="adminlevels"
+         [textField]="'AdminLevelName'" [valueField]="'Id'" [valuePrimitive]="true">
+        </kendo-dropdownlist>
+      <br/>
+      <!-- <label> Photo: </label>
+        <div class="col-md-12">
+          <div *ngIf="previewimage" class="img-preview example-config">
+            <h3>Preview selected images</h3>
+            <div *ngFor="let image of previewimage | keyvalue">
+              <img src="image.value" [alt]="image.key" width="200px" data-max-size="10kb" class="img-fluid rounded" />
+              <button kendoButton (click)="deleteImageHandler($event, image.key)" iconClass="fa fa-remove fa-fw"></button>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-auto">
+              <kendo-upload class="selector" name="image" formControlName="CustomerPhoto"
+                (upload)="uploadEventHandler($event)"
+                (success)="successEventHandler($event)"
+                (remove)="removeEventHandler($event)"
+                [multiple]="true"
+                [concurrent]="false"
+                [saveUrl]="uploadSaveUrl"
+                [removeUrl]="uploadRemoveUrl">
+  
+              </kendo-upload> -->
+            <!-- </div>
+          </div>
+        </div> -->
+  
+      
+        <button kendoButton (click)="goBack()" [look]="'default'">Go Back</button>
+        <button kendoButton (click)="saveAdmin()" [look]="'default'">Save</button>
+  </div>
+  </form>

@@ -1,0 +1,25 @@
+<h1>{{'Admin'}}</h1>
+<kendo-grid [data]="admingrid"
+[pageSize]="gridState.take"
+[skip]="gridState.skip"
+[sort]="gridState.sort"
+[filter]="gridState.filter"
+[sortable]="true"
+[pageable]="true"
+[filterable]="true"
+[height]="410"
+(dataStateChange)="onStateChange($event)">
+<kendo-grid-column field="Id" title="ID" [width]=40 filter="numeric"></kendo-grid-column>
+<kendo-grid-column field="AdminName" title="Name" [width]=40></kendo-grid-column>
+<kendo-grid-column field="Email" title="Email" [width]=40></kendo-grid-column>
+<kendo-grid-column field="LoginName" title="LoginName" [width]=40></kendo-grid-column>
+<kendo-grid-column field="AdminLevelName" title="Level" [width]=40></kendo-grid-column>
+<kendo-grid-column title="Actions" [width]=120>
+  <ng-template kendoGridCellTemplate let-dataItem>
+    <button kendoButton [look]="default" iconClass="fa fa-remove fa-fw" (click)="delete(dataItem)"></button>
+    <button kendoButton [look]="default" iconClass="fa fa-edit fa-fw" (click)="detail(dataItem)"></button>
+  </ng-template>
+</kendo-grid-column>
+</kendo-grid>
+
+<a routerLink="add">Add New Admin</a>

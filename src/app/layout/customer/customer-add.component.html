@@ -1,0 +1,43 @@
+<h2>Customer Add</h2>
+<form [formGroup]="customerAdd" (ngSubmit)="submitCustomer()" #formDir="ngForm">
+    <div class="">
+        <label for="CustomerName">Customer Name:</label>
+        <input class="form-control" placeholder="Customer Name" formControlName="CustomerName"/>
+         <br>
+         <label for="CustomerAddress">Customer Address:</label>
+         <input class="form-control" placeholder="Customer Address" formControlName="CustomerAddress"/>
+         <br>
+         <label for="RegisterDate">Register Date:</label>
+         <kendo-datepicker class="form-control" formControlName="RegisterDate" format="dd/MM/yyyy">
+         </kendo-datepicker>
+         <br>
+         <label for="Department">Department:</label>
+         <kendo-dropdownlist 
+         class="form-control" 
+         formControlName="CustomerTypeId" 
+         [data]="customertypes"
+         [textField]="'CustomerTypeName'" [valueField]="'Id'" [valuePrimitive]="true">
+        </kendo-dropdownlist>
+    </div>
+    <br>
+    <label>Photo:
+        <div class="col-md-12">
+            <div class="form-group row">
+                <div class="col-auto">
+                <kendo-upload class="selector" name="image" formControlName="CustomerPhoto"
+                (upload)="uploadEventHandler($event)"
+                (success)="successEventHandler($event)"
+                (remove)="removeEventHandler($event)"
+                [multiple]="true"
+                [concurrent]="false"
+                [saveUrl]="uploadSaveUrl"
+                [removeUrl]="uploadRemoveUrl">
+                </kendo-upload>
+                </div>
+            </div>
+        </div>
+    </label>
+    <button kendoButton (click)="goBack()" [look]="'default'">Go Back</button>
+    <button type="submit" kendoButton [look]="'default'">Submit</button>
+
+</form>

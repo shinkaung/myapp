@@ -1,0 +1,47 @@
+<h2>Admin Add</h2>
+<form [formGroup]="adminAdd" (ngSubmit)="submitAdmin()" #formDir="ngForm">
+    <div class="">
+        <label for="AdminName">Admin Name:</label>
+        <input class="form-control" placeholder="Admin Name" formControlName="AdminName"/>
+         <br>
+         <label for="Email">Email:</label>
+         <input class="form-control" placeholder="Email" formControlName="Email"/>
+         <br>
+         <label for="LoginName">LoginName:</label>
+         <input class="form-control" placeholder="LoginName" formControlName="LoginName"/>
+         <br>
+         <label for="Password">Password:</label>
+         <input class="form-control input-underline input-lg" [placeholder]="'Password' | translate" formControlName="Password" type="password"/>
+         <label for="Password">Repeat Password:</label>
+         <input class="form-control input-underline input-lg" [placeholder]="'Repeat Password' | translate" formControlName="Password" type="password"/>
+         <br>
+         <label for="AdminLevel">AdminLevel:</label>
+         <kendo-dropdownlist 
+         class="form-control" 
+         formControlName="AdminLevelId" 
+         [data]="adminlevels"
+         [textField]="'AdminLevelName'" [valueField]="'Id'" [valuePrimitive]="true">
+        </kendo-dropdownlist>
+    </div>
+    <br>
+    <label>Photo:
+        <div class="col-md-12">
+            <div class="form-group row">
+                <div class="col-auto">
+                <kendo-upload class="selector" name="image" formControlName="AdminPhoto"
+                (upload)="uploadEventHandler($event)"
+                (success)="successEventHandler($event)"
+                (remove)="removeEventHandler($event)"
+                [multiple]="true"
+                [concurrent]="false"
+                [saveUrl]="uploadSaveUrl"
+                [removeUrl]="uploadRemoveUrl">
+                </kendo-upload>
+                </div>
+            </div>
+        </div>
+    </label>
+    <button kendoButton (click)="goBack()" [look]="'default'">Go Back</button>
+    <button type="submit" kendoButton [look]="'default'">Submit</button>
+
+</form>

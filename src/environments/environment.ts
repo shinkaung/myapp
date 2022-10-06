@@ -1,10 +1,15 @@
 // This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  api_url: 'https://localhost:7232/api'
+    production: false,
+    api_url: 'https://localhost:7232/api',
+    file_api_url: 'https://localhost:7232/api/fileService',
+    SecretKey: "TTRAINING001224GGWTT", //for client side,don't use same key in server side
+    SecretSalt: "VITRAINING001222987", //for client side encrypt/decrypt
+    minPasswordLength: 8,
+    localstorage_prefix: 'training2022_'
 };
 
 /*

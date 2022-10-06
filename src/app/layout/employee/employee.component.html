@@ -1,0 +1,23 @@
+<h2>My Employee</h2>
+<div>
+  <label for="new-employee">Employee name: </label>
+  <input id="new-employee" #employeeName />
+  <label for="new-address">Employee Address: </label>
+  <input id="new-address" #employeeAddress />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button"(click) ="add(employeeName.value, employeeAddress.value); employeeName.value = '';employeeAddress.value = '';">
+    Add 
+  </button>
+</div>
+
+<ul class="employes">
+  <li *ngFor="let employee of employees">
+    <a routerLink="/empdetail/{{ employee.Id }}"><span class="badge">{{ employee.Id }}   </span> {{employee.empName}}&nbsp;&nbsp;,&nbsp;{{ employee.empAddress }}</a>
+    <button type="button" class="delete" title="delete employee"(click)="delete(employee)" >
+      Delete
+    </button>
+  </li>
+</ul>
+
+<app-employee-search></app-employee-search>
